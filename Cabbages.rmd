@@ -1,7 +1,7 @@
 ---
 title: "Cabbages"
-author: "Put your name here!"
-date: "put the date here"
+author: "DESMOND KOUTSO"
+date: "SUMMER 2022"
 output:
   html_document:
     df_print: paged
@@ -20,10 +20,14 @@ veggy <- cabbages
  The cabbages data from the MASS package is loaded into a dataframe called veggy. Complete this report by answering the following two questions  
  
 ### Is there a difference in average VitC between c39 and c52 cultivation methods?  
+$H_0$:there is no difference in the averege vitC between c39 and c52  
+$H_A$:there is a difference in the average VitC between c39 and c52
+
 
 # Methods
-
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+we are explaining the vitamin C numerical by examining the cultivation method which is a categorical variable.  
+We will use the T-test to compare the mean of the two vit C groups  
 
 # Results
 
@@ -32,18 +36,33 @@ veggy <- cabbages
 ## Descriptive Results
 
 ### Graphical Descriptive Results
+```{r}
+boxplot(VitC~Cult,data=veggy)
+``` 
+
+the VitC is on the y axis, the Cult on the X axis.    
+The category C39 had a lower mean for the numerical value, while the C52 had a greater mean.  
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ### Numerical Descriptive Results
+```{r}
+favstats(VitC~Cult,data=veggy)
+```
+C39 has a median of 51.0.  
+C52 has a median of 64.5  
+
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ## Inferential Results
-
+```{r}
+t.test(VitC~Cult,data=veggy)
+```
+The P-value here based on the T-test is 0.00000003405.  
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
-
+ 
 # Discussion and Conclusion
-
+We reject the Null hypothesis, due to the reason that the P-value is very small.  
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
